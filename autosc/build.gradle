@@ -1,8 +1,39 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 ext
         {
             rxandroidVersion = '2.0.1'
             rxjavaVersion = '2.1.5'
+
+
+
+            bintrayRepo = "PandaAutoScroll"
+            bintrayName = "qenawi.panda.autosc"
+
+            publishedGroupId = 'qenawi.panda.autosc'
+            libraryName = 'autosc'
+            artifact = 'autosc'
+
+            libraryDescription = 'AutoScroll Lib'
+
+            siteUrl = 'https://github.com/Qenawi/autoscroll'
+            gitUrl = 'https://github.com/Qenawi/autoscroll.git'
+
+            libraryVersion = '1.0.0'
+
+            developerId = 'panda'
+            developerName = 'MR Qenawi'
+            developerEmail = 'radnaxx5@gmail.com'
+
+            licenseName = 'The Apache Software License, Version 2.0'
+            licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+            allLicenses = ["Apache-2.0"]
+
+
+
+
+
         }
 android {
     compileSdkVersion 28
@@ -44,4 +75,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+}
+repositories {
+    mavenCentral()
+}
+if (project.rootProject.file('local.properties').exists())
+{
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
